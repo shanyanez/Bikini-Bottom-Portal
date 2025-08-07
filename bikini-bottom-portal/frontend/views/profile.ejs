@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> - Bikini Bottom Portal</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Bubbles background -->
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-fish"></i>
+                <span>Bikini Bottom Portal</span>
+            </div>
+            <div class="nav-links">
+                <a href="/" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+                <a href="/profile" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    Profile
+                </a>
+                <a href="/auth/logout" class="nav-link logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="main-content">
+        <div class="profile-container">
+            <% if (success) { %>
+                <div class="alert alert-success">
+                    <i class="fas fa-check-circle"></i>
+                    <%= success %>
+                </div>
+            <% } %>
+
+            <% if (error) { %>
+                <div class="alert alert-error">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <%= error %>
+                </div>
+            <% } %>
+
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="profile-info">
+                    <h1><%= user.full_name %></h1>
+                    <p class="username">@<%= user.username %></p>
+                    <p class="email"><%= user.email %></p>
+                    <p class="member-since">Member since: <%= new Date(user.created_at).toLocaleDateString() %></p>
+                </div>
+            </div>
+
+            <div class="profile-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">🐙</div>
+                    <div class="stat-content">
+                        <h3>Jellyfish Caught</h3>
+                        <div class="stat-number"><%= user.jellyfish_count || 0 %></div>
+                        <form method="POST" action="/profile/add-jellyfish" style="display: inline;">
+                            <button type="submit" class="btn btn-small btn-secondary">
+                                <i class="fas fa-plus"></i>
+                                Catch One!
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">🍔</div>
+                    <div class="stat-content">
+                        <h3>Krabby Patties Eaten</h3>
+                        <div class="stat-number"><%= user.krabby_patties_eaten || 0 %></div>
+                        <form method="POST" action="/profile/eat-patty" style="display: inline;">
+                            <button type="submit" class="btn btn-small btn-secondary">
+                                <i class="fas fa-plus"></i>
+                                Eat One!
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-content">
+                        <h3>Favorite Character</h3>
+                        <div class="stat-text"><%= user.favorite_character || 'SpongeBob' %></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-edit">
+                <div class="edit-card">
+                    <h2><i class="fas fa-edit"></i> Edit Profile</h2>
+                    <form method="POST" action="/profile/update" class="edit-form">
+                        <div class="form-group">
+                            <label for="full_name">
+                                <i class="fas fa-id-card"></i>
+                                Full Name
+                            </label>
+                            <input 
+                                type="text" 
+                                id="full_name" 
+                                name="full_name" 
+                                value="<%= user.full_name %>"
+                                class="form-input"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="favorite_character">
+                                <i class="fas fa-star"></i>
+                                Favorite Character
+                            </label>
+                            <select id="favorite_character" name="favorite_character" class="form-input">
+                                <option value="SpongeBob" <%= user.favorite_character === 'SpongeBob' ? 'selected' : '' %>>SpongeBob SquarePants</option>
+                                <option value="Patrick" <%= user.favorite_character === 'Patrick' ? 'selected' : '' %>>Patrick Star</option>
+                                <option value="Squidward" <%= user.favorite_character === 'Squidward' ? 'selected' : '' %>>Squidward Tentacles</option>
+                                <option value="Mr. Krabs" <%= user.favorite_character === 'Mr. Krabs' ? 'selected' : '' %>>Mr. Krabs</option>
+                                <option value="Sandy" <%= user.favorite_character === 'Sandy' ? 'selected' : '' %>>Sandy Cheeks</option>
+                                <option value="Plankton" <%= user.favorite_character === 'Plankton' ? 'selected' : '' %>>Sheldon J. Plankton</option>
+                                <option value="Gary" <%= user.favorite_character === 'Gary' ? 'selected' : '' %>>Gary the Snail</option>
+                                <option value="Mrs. Puff" <%= user.favorite_character === 'Mrs. Puff' ? 'selected' : '' %>>Mrs. Puff</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="jellyfish_count">
+                                <i class="fas fa-fish"></i>
+                                Jellyfish Count
+                            </label>
+                            <input 
+                                type="number" 
+                                id="jellyfish_count" 
+                                name="jellyfish_count" 
+                                value="<%= user.jellyfish_count || 0 %>"
+                                min="0"
+                                class="form-input"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="krabby_patties_eaten">
+                                <i class="fas fa-hamburger"></i>
+                                Krabby Patties Eaten
+                            </label>
+                            <input 
+                                type="number" 
+                                id="krabby_patties_eaten" 
+                                name="krabby_patties_eaten" 
+                                value="<%= user.krabby_patties_eaten || 0 %>"
+                                min="0"
+                                class="form-input"
+                            >
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i>
+                            Save Changes
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="fun-actions">
+                <h3>Fun Actions</h3>
+                <div class="action-buttons">
+                    <a href="/" class="btn btn-secondary">
+                        <i class="fas fa-home"></i>
+                        Back to Home
+                    </a>
+                    <a href="/auth/logout" class="btn btn-danger">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Bikini Bottom Portal - Under the sea since forever!</p>
+            <p>Made with <i class="fas fa-heart"></i> and lots of Krabby Patties</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add some fun SpongeBob interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Make bubbles interactive
+            const bubbles = document.querySelectorAll('.bubble');
+            bubbles.forEach(bubble => {
+                bubble.addEventListener('click', function() {
+                    this.style.animation = 'pop 0.5s ease-out';
+                    setTimeout(() => {
+                        this.style.animation = '';
+                    }, 500);
+                });
+            });
+
+            // Add some fun hover effects
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.1)';
+                });
+                link.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> - Bikini Bottom Portal</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Bubbles background -->
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-fish"></i>
+                <span>Bikini Bottom Portal</span>
+            </div>
+            <div class="nav-links">
+                <a href="/" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+                <a href="/auth/login" class="nav-link">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </a>
+                <a href="/auth/register" class="nav-link">
+                    <i class="fas fa-user-plus"></i>
+                    Register
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="main-content">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <i class="fas fa-fish"></i>
+                    <h1>Welcome to Bikini Bottom!</h1>
+                    <p>Ready to dive into your account?</p>
+                </div>
+
+                <% if (error) { %>
+                    <div class="alert alert-error">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <%= error %>
+                    </div>
+                <% } %>
+
+                <% if (success) { %>
+                    <div class="alert alert-success">
+                        <i class="fas fa-check-circle"></i>
+                        <%= success %>
+                    </div>
+                <% } %>
+
+                <form class="auth-form" method="POST" action="/auth/login">
+                    <div class="form-group">
+                        <label for="username">
+                            <i class="fas fa-user"></i>
+                            Username
+                        </label>
+                        <input 
+                            type="text" 
+                            id="username" 
+                            name="username" 
+                            required 
+                            placeholder="Enter your username"
+                            class="form-input"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">
+                            <i class="fas fa-lock"></i>
+                            Password
+                        </label>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            required 
+                            placeholder="Enter your password"
+                            class="form-input"
+                        >
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Login to Bikini Bottom
+                    </button>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Don't have an account? 
+                        <a href="/auth/register" class="link">Join the fun!</a>
+                    </p>
+                </div>
+
+                <div class="fun-tips">
+                    <h4>💡 Fun Tips:</h4>
+                    <ul>
+                        <li>Try logging in as SpongeBob (pineapple123)</li>
+                        <li>Or Patrick (rock123) for a different experience!</li>
+                        <li>Don't forget your password, or you'll be as confused as Patrick!</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Bikini Bottom Portal - Under the sea since forever!</p>
+            <p>Made with <i class="fas fa-heart"></i> and lots of Krabby Patties</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add some fun SpongeBob interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Make bubbles interactive
+            const bubbles = document.querySelectorAll('.bubble');
+            bubbles.forEach(bubble => {
+                bubble.addEventListener('click', function() {
+                    this.style.animation = 'pop 0.5s ease-out';
+                    setTimeout(() => {
+                        this.style.animation = '';
+                    }, 500);
+                });
+            });
+
+            // Add some fun hover effects
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.1)';
+                });
+                link.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

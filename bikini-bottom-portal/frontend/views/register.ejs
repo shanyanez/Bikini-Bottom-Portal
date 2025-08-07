@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> - Bikini Bottom Portal</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Bubbles background -->
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-fish"></i>
+                <span>Bikini Bottom Portal</span>
+            </div>
+            <div class="nav-links">
+                <a href="/" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+                <a href="/auth/login" class="nav-link">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </a>
+                <a href="/auth/register" class="nav-link">
+                    <i class="fas fa-user-plus"></i>
+                    Register
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="main-content">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <i class="fas fa-user-plus"></i>
+                    <h1>Join Bikini Bottom!</h1>
+                    <p>Become part of our underwater community!</p>
+                </div>
+
+                <% if (error) { %>
+                    <div class="alert alert-error">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <%= error %>
+                    </div>
+                <% } %>
+
+                <form class="auth-form" method="POST" action="/auth/register">
+                    <div class="form-group">
+                        <label for="username">
+                            <i class="fas fa-user"></i>
+                            Username
+                        </label>
+                        <input 
+                            type="text" 
+                            id="username" 
+                            name="username" 
+                            required 
+                            placeholder="Choose a unique username"
+                            class="form-input"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">
+                            <i class="fas fa-envelope"></i>
+                            Email
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required 
+                            placeholder="your@email.com"
+                            class="form-input"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="full_name">
+                            <i class="fas fa-id-card"></i>
+                            Full Name
+                        </label>
+                        <input 
+                            type="text" 
+                            id="full_name" 
+                            name="full_name" 
+                            required 
+                            placeholder="Your full name"
+                            class="form-input"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="favorite_character">
+                            <i class="fas fa-star"></i>
+                            Favorite Character
+                        </label>
+                        <select id="favorite_character" name="favorite_character" class="form-input">
+                            <option value="SpongeBob">SpongeBob SquarePants</option>
+                            <option value="Patrick">Patrick Star</option>
+                            <option value="Squidward">Squidward Tentacles</option>
+                            <option value="Mr. Krabs">Mr. Krabs</option>
+                            <option value="Sandy">Sandy Cheeks</option>
+                            <option value="Plankton">Sheldon J. Plankton</option>
+                            <option value="Gary">Gary the Snail</option>
+                            <option value="Mrs. Puff">Mrs. Puff</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">
+                            <i class="fas fa-lock"></i>
+                            Password
+                        </label>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            required 
+                            placeholder="Create a strong password"
+                            class="form-input"
+                            minlength="6"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">
+                            <i class="fas fa-lock"></i>
+                            Confirm Password
+                        </label>
+                        <input 
+                            type="password" 
+                            id="confirmPassword" 
+                            name="confirmPassword" 
+                            required 
+                            placeholder="Confirm your password"
+                            class="form-input"
+                        >
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <i class="fas fa-user-plus"></i>
+                        Create Account
+                    </button>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Already have an account? 
+                        <a href="/auth/login" class="link">Login here!</a>
+                    </p>
+                </div>
+
+                <div class="fun-tips">
+                    <h4>💡 Registration Tips:</h4>
+                    <ul>
+                        <li>Choose a username that's uniquely you!</li>
+                        <li>Password must be at least 6 characters long</li>
+                        <li>Pick your favorite Bikini Bottom character</li>
+                        <li>We'll never share your info with Plankton!</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Bikini Bottom Portal - Under the sea since forever!</p>
+            <p>Made with <i class="fas fa-heart"></i> and lots of Krabby Patties</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add some fun SpongeBob interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Make bubbles interactive
+            const bubbles = document.querySelectorAll('.bubble');
+            bubbles.forEach(bubble => {
+                bubble.addEventListener('click', function() {
+                    this.style.animation = 'pop 0.5s ease-out';
+                    setTimeout(() => {
+                        this.style.animation = '';
+                    }, 500);
+                });
+            });
+
+            // Add some fun hover effects
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.1)';
+                });
+                link.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
