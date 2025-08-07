@@ -63,7 +63,7 @@ Perfect for showcasing web development skills with a playful, cartoon-themed int
 4. **Visit the application**
    Open your browser and go to `http://localhost:3000`
 
-## 🎮 Sample Accounts
+## Sample Accounts
 
 Try these pre-created accounts to explore the portal:
 
@@ -97,7 +97,7 @@ bikini-bottom-portal/
 └── README.md
 ```
 
-## 🎨 Design Features
+## Design Features
 
 ### Color Palette
 - **SpongeBob Yellow**: `#ffd93d`
@@ -113,7 +113,7 @@ bikini-bottom-portal/
 - Hover effects on cards and buttons
 - Interactive bubble clicks
 
-## 🔐 Security Features
+## Security Features
 
 - Password hashing with bcryptjs
 - Session management with express-session
@@ -121,7 +121,7 @@ bikini-bottom-portal/
 - Input validation and sanitization
 - Secure cookie configuration
 
-## 🛠️ Development
+## Development
 
 ### Running in Development Mode
 ```bash
@@ -137,7 +137,7 @@ The application uses SQLite for data storage. The database file (`bikini_bottom.
 3. Create EJS templates in `frontend/views/`
 4. Style with CSS in `frontend/public/css/style.css`
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -161,8 +161,7 @@ The application uses SQLite for data storage. The database file (`bikini_bottom.
 5. Submit a pull request
 
 
-## 🙏 Acknowledgments
-
+## Acknowledgments
 - **Educational Project**: Built for learning full-stack web development
 - **Inspired by**: The wonderful world of SpongeBob SquarePants
 - **Built with love** for the Bikini Bottom community
