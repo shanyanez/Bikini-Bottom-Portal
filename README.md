@@ -2,7 +2,7 @@
 
 Welcome to the finest user portal under the sea! A SpongeBob-themed web application with secure user authentication and profile management.
 
-## 📚 **Class Project**
+## **Class Project**
 This is a fun educational project built for learning full-stack web development concepts. It demonstrates:
 - **MVC Architecture** with organized code structure
 - **Secure Authentication** with password hashing and sessions
@@ -10,11 +10,9 @@ This is a fun educational project built for learning full-stack web development 
 - **Responsive Design** with modern CSS and animations
 - **Server-side Rendering** with EJS templates
 
-Perfect for showcasing web development skills with a playful, cartoon-themed interface!
-
 ## Features
 
-- **SpongeBob-Themed UI**: Beautiful cartoon design with jellyfish fields pastels and pineapple house accents
+- **SpongeBob-Themed UI**: Cartoon design with jellyfish fields pastels and pineapple house accents
 - **Secure Authentication**: User registration and login with password hashing
 - **Profile Management**: Edit personal information and track fun stats
 - **Fun Features**: 
@@ -153,20 +151,10 @@ The application uses SQLite for data storage. The database file (`bikini_bottom.
    - Run `npm install` in both root and backend directories
    - Clear npm cache: `npm cache clean --force`
 
-## Contributing
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
-
 ## Acknowledgments
 - **Educational Project**: Built for learning full-stack web development
 - **Inspired by**: The wonderful world of SpongeBob SquarePants
-- **Built with love** for the Bikini Bottom community
 - **Special thanks** to Mr. Krabs for the business inspiration
 
 ---
 
-**Ready to dive into Bikini Bottom? Let's go! 🐟✨**
