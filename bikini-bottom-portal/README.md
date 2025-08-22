@@ -153,20 +153,6 @@ The application uses SQLite for data storage. The database file (`bikini_bottom.
    - Run `npm install` in both root and backend directories
    - Clear npm cache: `npm cache clean --force`
 
-## Contributing
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
-
-## 🙏 Acknowledgments
-
-- **Educational Project**: Built for learning full-stack web development
-- **Inspired by**: The wonderful world of SpongeBob SquarePants
-- **Built with love** for the Bikini Bottom community
-- **Special thanks** to Mr. Krabs for the business inspiration
 
 ---
 
